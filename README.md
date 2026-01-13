@@ -1,2 +1,3 @@
+- Chrome extension
 - open Medium through Freedium
 - click LBM to open the article on Freedium
