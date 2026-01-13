@@ -3,13 +3,13 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
 
   const url = new URL(changeInfo.url);
 
-  if (!isMediumArticle(url)) return;
+  if (!isMediumStory(url)) return;
 
   const freedium = buildFreediumUrl(url);
   chrome.tabs.update(tabId, { url: freedium });
 });
 
-function isMediumArticle(url) {
+function isMediumStory(url) {
   return /-[a-f0-9]{10,}$/.test(url.pathname);
 }
 

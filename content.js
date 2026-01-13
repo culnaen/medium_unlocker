@@ -6,7 +6,7 @@ document.addEventListener(
 
     const url = new URL(a.href);
 
-    if (!isMediumArticle(url)) return;
+    if (!isMediumStory(url)) return;
 
     e.preventDefault();
     e.stopPropagation();
@@ -20,7 +20,7 @@ document.addEventListener(
   true
 );
 
-function isMediumArticle(url) {
+function isMediumStory(url) {
   return /-[a-f0-9]{10,}$/.test(url.pathname);
 }
 
