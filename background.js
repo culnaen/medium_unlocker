@@ -1,6 +1,8 @@
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   if (!changeInfo.url) return;
 
+  if (!changeInfo.url.includes("medium.com")) return;
+  
   const url = new URL(changeInfo.url);
 
   if (!isMediumStory(url)) return;
@@ -10,8 +12,15 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
 });
 
 function isMediumStory(url) {
+  const isMedium =
+    url.hostname === "medium.com" ||
+    url.hostname.endsWith(".medium.com");
+
+  if (!isMedium) return false;
+
   return /-[a-f0-9]{10,}$/.test(url.pathname);
 }
+
 
 function buildFreediumUrl(url) {
   let publication = null;
